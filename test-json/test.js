@@ -138,12 +138,17 @@ function parse_to_element(json, form) {
     let br = document.createElement('br');
     let padding = document.createAttribute('style');
     
-    let div = document.createElement('div');
+    let section = document.createElement('section'); //<section> </section>
     let tagClass = document.createAttribute('class');
+
     
+    section.appendChild(elem); // criação de um section para cada imput
+    form.appendChild(section); // inserção de section dentro do form
+    
+
     if('type' in json){
         elem.type = json['type'];
-        padding.value = 'padding-left: 10px';
+        // padding.value = 'padding-left: 10px';
     }
     if('value' in json) {
         elem.value = json['value'];
@@ -156,11 +161,11 @@ function parse_to_element(json, form) {
     }
     if('id' in json) {
         elem.id = json['id'];
-    }       
-    
+    }          
 
     if('prelabel' in json) {
         let prelabel = document.createElement('label');
+        
         if('id' in json)
             prelabel.htmlFor = json['id'];
         if(elem.type == 'checkbox' || elem.type == 'radio'){
@@ -169,10 +174,11 @@ function parse_to_element(json, form) {
         else
             prelabel.innerHTML = json['prelabel'];  
        
-        form.appendChild(prelabel);
-
+        // form.appendChild(prelabel);
+            section.appendChild(prelabel);
     }   
 
+    form.appendChild(elem);
     if('children' in json) {
         for(let i = 0; i < json['children'].length; i++){
             parse_to_element(json['children'][i], elem);
@@ -182,8 +188,8 @@ function parse_to_element(json, form) {
         elem.innerHTML = json['innerhtml'];
     }
     
-    form.appendChild(elem);
-
+    // form.appendChild(elem);
+    section.appendChild(elem)
     
     if('poslabel' in json) {
         let poslabel = document.createElement('label');
@@ -191,16 +197,22 @@ function parse_to_element(json, form) {
             poslabel.htmlFor = json['id'];
         
         poslabel.innerHTML = json['poslabel'];
-        form.appendChild(poslabel);        
+        form.appendChild(poslabel);    
+        section.appendChild(poslabel);
     }
     
-    form.appendChild(br);
+    section.appendChild(br);
+    // form.appendChild(br);
+
+    // form.innerHTML = "</div>";
+    section.appendChild(element);    
+    document.form.appendChild(section);
     
 }
 
 function parse_to_form(json, elem) {
-    let form = document.createElement('form'); // <form> </form>
-    
+    let form = document.createElement('form'); // <form> </form>   
+
     if('name' in json)
         form.name = json['name']; // <form name="nome"></form>
     if('method' in json)
@@ -212,13 +224,17 @@ function parse_to_form(json, elem) {
     if('css' in json)
         form.style = json['css'];
     if('items' in json) {
-        for(var i = 0; i < json['items'].length; i++) {
+        for(var i = 0; i < json['items'].length; i++) { 
+            // form.appendChild(section);           
             parse_to_element(json['items'][i], form);
+            console.log(json['items'][i]);
+            console.log(form);
         }
+        
     }
-    
-    elem.appendChild(form);
 
+    // form.appendChild(section);
+    elem.appendChild(form);
 }
 
 function parse(elemOutputId) {
