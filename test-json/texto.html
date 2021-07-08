@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<div id="output">
+		<form name="complexo" method="get" action="consegui.html" autocomplete="true">
+			<label>Nome:</label>
+			<input type="text" name="cidade" placeholder="informe aqui o seu nome"><br>
+			<label>Cidade:</label>
+			<input type="text" name="cidade" placeholder="informe aqui a sua cidade"><br>
+			<label>Qual a sua idade?</label>
+			<select name="idade">
+				<option value="less18">Menos de 18 anos</option><br>
+				<option value="18a59">18 a 59</option><br>
+				<option value="60a64">60 a 64</option><br>
+				<option value="65a69">65 a 69</option><br>
+				<option value="70a74">70 a 74</option><br>
+				<option value="75more">75 ou mais</option><br>
+			</select><br>
+			<label for="cb-saude">Qual a sua área de atuação?<br></label>
+			<input type="checkbox" value="saude" name="areaatuacao" id="cb-saude">
+			<label for="cb-saude">Saúde</label><br>
+			<input type="checkbox" value="educacao" name="areaatuacao" id="cb-educacao">
+			<label for="cb-educacao">Educação</label><br>
+			<input type="checkbox" value="seguranca" name="areaatuacao" id="cb-seguranca">
+			<label for="cb-seguranca">Segurança</label><br>
+			<input type="checkbox" value="outro" name="areaatuacao" id="cb-outro">
+			<label for="cb-outro">Outra</label><br>
+			<label for="comorbidades-sim">Você tem alguma comorbidade que agrave a COVID-19?<br></label>
+			<input type="radio" value="sim" name="comorbidades" id="comorbidades-sim">
+			<label for="comorbidades-sim">Sim</label><br>
+			<input type="radio" value="nao" name="comorbidades" id="comorbidades-nao">
+			<label for="comorbidades-nao">Não</label><br>
+			<label for="gestante-sim">Você é gestante?<br></label>
+			<input type="radio" value="sim" name="gestante" id="gestante-sim">
+			<label for="gestante-sim">Sim</label><br>
+			<input type="radio" value="nao" name="gestante" id="gestante-nao">
+			<label for="gestante-nao">Não</label><br><input type="submit" value="Enviar"><br>
+		</form>
+	</div>
+</body>
+</html>
